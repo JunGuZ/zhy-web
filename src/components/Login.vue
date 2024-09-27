@@ -34,12 +34,12 @@ export default {
     async handleLogin() {
       try {
         const response = await this.login(this.account);
-        this.$router.push('/home'); // 登录成功后跳转
-        // if (response && response.code === 200) { // 根据后端返回的状态判断
-        //
-        // } else {
-        //   console.error('登录失败:', response.message || '未知错误');
-        // }
+
+        if (response) { // 根据后端返回的状态判断
+          this.$router.push('/home'); // 登录成功后跳转
+        } else {
+          console.error('登录失败:', response.message || '未知错误');
+        }
       } catch (error) {
         console.error('请求失败:', error);
       }
